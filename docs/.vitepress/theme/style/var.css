@@ -1,0 +1,7 @@
+body {
+    line-height: unset !important;
+}
+
+.content {
+    padding: 0 10px !important;
+}

@@ -1,0 +1,22 @@
+{
+  "name": "vitepress_demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs",
+    "dev": "vitepress dev docs"
+  },
+  "devDependencies": {
+    "vitepress": "^1.0.0-alpha.15",
+    "vue": "^3.2.39"
+  },
+  "dependencies": {
+    "@highlightjs/vue-plugin": "^2.1.0",
+    "highlightjs": "^9.16.2",
+    "pyodide": "^0.21.3",
+    "simple-code-editor": "^1.2.2"
+  }
+}
