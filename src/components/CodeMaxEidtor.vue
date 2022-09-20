@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, getCurrentInstance, provide } from 'vue'
 
 import { RunCodeRequest } from "./runcode";
 
@@ -9,11 +9,6 @@ const props = defineProps({
   code: String
 })
 
-const RunPythonCode = async(payload: any) => {
-   // @ts-ignore
-   let pyodide = await window.loadPyodide();
-   return pyodide.runPythonAsync("1+1");
-}
 
 const emit = defineEmits(['change', 'delete'])
 
@@ -21,19 +16,31 @@ const CodeData = ref(props.code);
 
 const OutputResult = ref("");
 
-const RunCodeAction = async () => {
-    const payload = {
-        "language": "python3",
-        "code": CodeData.value,
-        "timestamp": Date.now()
-    }
-    const resp = await RunPythonCode(payload);
 
-    OutputResult.value = resp.result;
+// const RunPythonCode = async(payload: any) => {
+//    // @ts-ignore
+//    let Pyodide = await loadPyodide();
+
+//    return Pyodide.runPythonAsync("1+1");
+// }
+
+const {proxy} = getCurrentInstance();
+
+const RunCodeAction = async (code: string) => {
+    // const payload = {
+    //     "language": "python3",
+    //     "code": CodeData.value,
+    //     "timestamp": Date.now()
+    // }
+    const resp = await proxy.$RunPythonCode(code);
+    return resp;
 }
 
+provide("RunCodeAction", RunCodeAction);
+
 onMounted(async() => {
-    await RunCodeAction();
+    // await RunCodeAction();
+
 })
 
 const Languages = ref([['python', 'Python']]);

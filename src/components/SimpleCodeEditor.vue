@@ -95,10 +95,14 @@
     </div>
       <div class="footer">
         <div class="leftBlock">
-          <button>Run</button>
+          <button @click="RunCodeButton">Run</button>
         </div>
       </div>
   </div>
+
+      <div v-if="OutputResult" class="OutputBox">
+          <pre>{{ OutputResult }}</pre>
+      </div>
 </template>
 
 <script>
@@ -106,12 +110,26 @@ import hljs from "highlight.js";
 import Dropdown from "./Dropdown.vue";
 import CopyCode from "./CopyCode.vue";
 
+import { inject, ref, getCurrentInstance } from "vue"
+
 export default {
   components: {
     Dropdown,
     CopyCode,
   },
   name: "CodeEditor",
+  setup() {
+    const RunCodeAction = inject("RunCodeAction");
+    const OutputResult = ref("");
+  
+    const {proxy} = getCurrentInstance();
+
+    return {
+      RunCodeAction,
+      OutputResult,
+      proxy,
+    }
+  },
   props: {
     modelValue: {
       type: String,
@@ -269,6 +287,15 @@ export default {
     },
   },
   methods: {
+    async RunCodeButton() {
+      let result = await this.RunCodeAction(this.content);
+      if (result) {
+        this.OutputResult = result + "\n" + this.proxy.$GetConsoleResult();;  
+      } else {
+        this.OutputResult = this.proxy.$GetConsoleResult();
+      }
+    },
+
     changeLang(lang) {
       this.mark = lang[1] === undefined ? lang[0] : lang[1];
       this.languageClass = 'language-' + lang[0];
@@ -632,5 +659,31 @@ Original One Light Syntax theme from https://github.com/atom/one-light-syntax
 }
 .atom_one_light .hljs-link {
   text-decoration: underline;
+}
+
+.OutputBox {
+  color:  #fff;
+    position: relative;
+    margin-top: 24px; 
+    padding: 0px 20px 0 20px; 
+    width: auto;
+    color: #abb2bf;
+    border-radius: 12px;
+    background: #282c34;
+    font-family: Monaco, monospace;
+    line-height: 1.5;
+    font-size: 14px;
+    overflow: auto;
+    max-height: 300px;
+
+}
+.OutputBox pre {
+    font-family: Monaco, monospace;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.5;
+    /*color: #fbfcfa;*/
+      color:  #fff;
+
 }
 </style>
