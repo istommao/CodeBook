@@ -38,11 +38,6 @@ const RunCodeAction = async (code: string) => {
 
 provide("RunCodeAction", RunCodeAction);
 
-onMounted(async() => {
-    // await RunCodeAction();
-
-})
-
 const Languages = ref([['python', 'Python']]);
 // const Languages = ref([['python', 'Python'], ['rust', "Rust"], ['go', "Go"], ['javascript', 'JS']]);
 

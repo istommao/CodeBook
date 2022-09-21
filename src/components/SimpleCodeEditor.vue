@@ -95,7 +95,7 @@
     </div>
       <div class="footer">
         <div class="leftBlock">
-          <button @click="RunCodeButton">Run</button>
+          <button v-if="ShowRunButton" @click="RunCodeButton">Run</button>
         </div>
       </div>
   </div>
@@ -110,7 +110,7 @@ import hljs from "highlight.js";
 import Dropdown from "./Dropdown.vue";
 import CopyCode from "./CopyCode.vue";
 
-import { inject, ref, getCurrentInstance } from "vue"
+import { inject, ref, getCurrentInstance, onMounted } from "vue"
 
 export default {
   components: {
@@ -124,10 +124,28 @@ export default {
   
     const {proxy} = getCurrentInstance();
 
+    const ShowRunButton = ref(false);
+
+
+    onMounted(async() => {
+        if (proxy.$GetPyodideObj()) {
+            ShowRunButton.value = true;
+        } else {
+            var interval;
+            interval = setInterval(async function() { 
+               if (proxy.$GetPyodideObj()) {
+                    clearInterval(interval);
+                    ShowRunButton.value = true;
+                }
+            },  500);
+        }
+    })
+
     return {
       RunCodeAction,
       OutputResult,
       proxy,
+      ShowRunButton,
     }
   },
   props: {

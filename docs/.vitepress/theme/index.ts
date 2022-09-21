@@ -1,12 +1,13 @@
 import Theme from 'vitepress/theme'
 import './style/var.css'
 
-
 // @ts-ignore
 
-import "https://cdn.jsdelivr.net/pyodide/v0.21.3/full/pyodide.js"
+// import "https://cdn.jsdelivr.net/pyodide/v0.21.3/full/pyodide.js"
+// import "pyodide.js"
 
-let Pyodide;
+
+let PyodideObj;
 
 import {ref} from "vue";
 
@@ -14,15 +15,18 @@ let ConsoleResult = ref("");
 
 const RunPythonCode = async(code: string) => {
   let result;
+  if (!PyodideObj) {
+    await InitPyodideJS();
+  }
+
   try {
-     result = await Pyodide.runPythonAsync(code); 
+     result = await PyodideObj.runPythonAsync(code); 
    } catch (err) {
      console.error(err)
      result = err;
    }
 
    return result;
-  
 }
 
 var old = console.log;
@@ -36,6 +40,10 @@ console.log = function (message) {
   }
 }
 
+const GetPyodideObj = () => {
+    return PyodideObj;
+}
+
 const GetConsoleResult = () => {
    return ConsoleResult.value;
 }
@@ -43,6 +51,13 @@ const GetConsoleResult = () => {
 const ResetConsoleResult = () => {
    ConsoleResult.value = "";
    return;
+}
+
+const InitPyodideJS = async () => {
+    if (window.loadPyodide) {
+        PyodideObj = await window.loadPyodide()
+        return PyodideObj;
+    }
 }
 
 
@@ -56,8 +71,12 @@ export default {
     // }
 
      // @ts-ignore
-    Pyodide = await loadPyodide();
+    // Pyodide = await loadPyodide();
 
+    app.config.globalProperties.$Console = old;
+    app.config.globalProperties.$PyodideObj = PyodideObj;
+    app.config.globalProperties.$GetPyodideObj = GetPyodideObj;
+    app.config.globalProperties.$InitPyodideJS = InitPyodideJS;
     app.config.globalProperties.$ResetConsoleResult = ResetConsoleResult;
     app.config.globalProperties.$GetConsoleResult = GetConsoleResult;
     app.config.globalProperties.$RunPythonCode = RunPythonCode;
