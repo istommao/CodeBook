@@ -288,6 +288,8 @@ export default {
   },
   methods: {
     async RunCodeButton() {
+      this.proxy.$ResetConsoleResult();
+
       let result = await this.RunCodeAction(this.content);
       if (result) {
         this.OutputResult = result + "\n" + this.proxy.$GetConsoleResult();;  

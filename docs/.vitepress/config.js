@@ -2,7 +2,7 @@ export default {
   title: 'CodeBook',
   description: 'CodeBook',
 // head: [
-//         ['script', { src: 'https://cdn.jsdelivr.net/pyodide/v0.21.3/full/pyodide.js' }],
+//         ['script', { defer: true, id: "PyodideJS", src: 'https://cdn.jsdelivr.net/pyodide/v0.21.3/full/pyodide.js' }],
 //     ],
   themeConfig: {
     socialLinks: [
@@ -15,8 +15,8 @@ export default {
       {
         text: 'Guide',
         items: [
-          { text: 'Introduction', link: '/intro' },
-          { text: 'Getting Started', link: '/getting-started' },
+          { text: 'Introduction', link: '/python/intro' },
+          { text: 'Function', link: '/python/function' },
         ]
       }
     ]

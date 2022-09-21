@@ -10,9 +10,9 @@
 - Dict
 
 <script setup>
-import CodeMaxEidtor from "../src/components/CodeMaxEidtor.vue"
+import CodeMaxEidtor from "../../src/components/CodeMaxEidtor.vue"
 
-import PythonCode from "../src/python/code"
+import PythonCode from "../../src/python/code"
 </script>
 
 ### Int

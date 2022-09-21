@@ -11,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /intro
+      link: /python/intro
     - theme: alt
       text: View on GitHub
       link: https://github.com/istommao
