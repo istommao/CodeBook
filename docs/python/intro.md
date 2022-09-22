@@ -1,6 +1,7 @@
-# Python基础类型
+# Python笔记
 
----
+
+## 内建类型
 
 - Int
 - String
@@ -9,13 +10,19 @@
 - Tuple
 - Dict
 
+## Function
+
+- 闭包
+- 装饰器
+
+## Class
+
+- 继承
+- 多态
+
+
 <script setup>
-import CodeMaxEidtor from "../../src/components/CodeMaxEidtor.vue"
-
-import PythonCode from "../../src/python/code";
-
-
-import { ref, onMounted, getCurrentInstance, provide } from 'vue'
+import { onMounted, getCurrentInstance } from 'vue'
 
 const {proxy} = getCurrentInstance();
 
@@ -32,11 +39,3 @@ onMounted(async() => {
 
 })
 </script>
-
-### Int
-
-<CodeMaxEidtor :code="PythonCode.IntDemo" />
-
-### String
-
-<CodeMaxEidtor :code="PythonCode.StringDemo" />

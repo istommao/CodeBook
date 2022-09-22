@@ -13,10 +13,40 @@ head: [
     ],
     sidebar: [
       {
-        text: 'Guide',
+        text: 'Guid',
         items: [
           { text: 'Introduction', link: '/python/intro' },
-          { text: 'Function', link: '/python/function' },
+          { text: 'Install', link: '/python/install' },
+        ]        
+      },
+      {
+        text: 'Basic',
+        items: [
+          {
+            text: 'DataType',
+            items: [
+              { text: 'Int', link: '/python/basic/int' },
+              { text: 'String', link: '/python/basic/str' },
+              { text: 'Tuple', link: '/python/basic/tuple' },
+              { text: 'List', link: '/python/basic/list' },
+              { text: 'Dict', link: '/python/basic/dict' },
+              { text: 'Set', link: '/python/basic/set' },
+            ] 
+          },
+          { text: 'Function', link: '/python/function'},
+          { text: 'Class', link: '/python/class' },
+        ]
+      },
+      {
+        text: 'Build-in',
+        items: [
+          { text: 'collections.deque', link: '/python/collections.deque' },
+        ]
+      },
+      {
+        text: 'Magic Method',
+        items: [
+          { text: '__getitem__', link: '/python/magic_getitem' },
         ]
       }
     ]
