@@ -3,9 +3,13 @@
 <script setup>
 import CodeMaxEidtor from "../../../src/components/CodeMaxEidtor.vue"
 
-import PythonCode from "./basic";
+const IntDemo = `\
+a = 1
+b = 2
+a + b\
+`
 </script>
 
 ---
 
-<CodeMaxEidtor :code="PythonCode.IntDemo" />
+<CodeMaxEidtor :code="IntDemo" />

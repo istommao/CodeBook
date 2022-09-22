@@ -3,9 +3,15 @@
 <script setup>
 import CodeMaxEidtor from "../../../src/components/CodeMaxEidtor.vue"
 
-import PythonCode from "./basic";
+
+const StringDemo = `\
+a = "Hello"
+
+print(a[0])\
+`
+
 </script>
 
 ---
 
-<CodeMaxEidtor :code="PythonCode.StringDemo" />
+<CodeMaxEidtor :code="StringDemo" />
