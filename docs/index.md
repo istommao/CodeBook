@@ -15,22 +15,25 @@ hero:
     # - theme: alt
     #   text: View on GitHub
     #   link: https://github.com/istommao
-    - theme: brand
-      text: Python
-      link: /python/intro
     - theme: alt
-      text: Go
+      text: ⚡️ Go
       link: /golang/intro
+    - theme: brand
+      text: 🦀️ Rust
+      link: /rust/intro
+    - theme: alt
+      text: 🐍 Python
+      link: /python/intro
 
 features:
   # - icon: ⚡️
-  - icon: 🐍
-    title: Python
-    details: Python 笔记
   - icon: ⚡️
     title: Go
     details: Golang
-  - icon: 🛠️
-    title: Simple and minimal, always
-    details: Lorem ipsum...
+  - icon: 🦀️
+    title: Rust
+    details: Rust
+  - icon: 🐍
+    title: Python
+    details: Python 笔记
 ---
