@@ -7,6 +7,17 @@ function sidebarRust() {
           { text: 'Install', link: '/rust/install' },
         ]        
       },
+      {
+        text: "Basic",
+        items: [
+          {text: "Array", link: '/rust/array'},
+          {text: "Function", link: '/rust/fn'},
+          {text: "If else", link: '/rust/ifelse'},
+          {text: "Match", link: '/rust/match'},
+          {text: "For While Loop", link: '/rust/forloop'},
+          {text: "Struct", link: '/rust/struct'},
+        ]
+      },
    ]
 }
 
