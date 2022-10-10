@@ -1,3 +1,15 @@
+function sidebarSQL() {
+  return [
+      {
+        text: 'Guide',
+        items: [
+          { text: 'Introduction', link: '/sql/intro' },
+        ]        
+      },
+   ]
+}
+
+
 function sidebarRust() {
   return [
       {
@@ -137,7 +149,8 @@ export default {
     sidebar: {
       '/rust/': sidebarRust(),
       '/golang/': sidebarGolang(),
-      '/python/': sidebarPython()
+      '/python/': sidebarPython(),
+      '/sql/': sidebarSQL()
     }
   }
 }

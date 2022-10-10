@@ -24,6 +24,9 @@ hero:
     - theme: alt
       text: 🐍 Python
       link: /python/intro
+    - theme: brand
+      text: 📖 SQL
+      link: /sql/intro
 
 features:
   # - icon: ⚡️
@@ -36,4 +39,7 @@ features:
   - icon: 🐍
     title: Python
     details: Python 笔记
+  - icon: 📖
+    title: SQL
+    details: SQL 笔记
 ---
