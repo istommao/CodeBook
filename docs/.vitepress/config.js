@@ -27,6 +27,7 @@ function sidebarGolang() {
         text: 'Guide',
         items: [
           { text: 'Introduction', link: '/golang/intro' },
+          { text: 'Playground', link: '/golang/playground' },
           { text: 'Install', link: '/golang/install' },
         ]        
       },

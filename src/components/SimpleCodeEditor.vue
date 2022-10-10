@@ -95,7 +95,12 @@
     </div>
       <div class="footer">
         <div class="leftBlock">
-          <button v-if="ShowRunButton" @click="RunCodeButton">Run</button>
+            <div v-if="current_language == 'go'">
+              <button @click="RunGoCodeButton">Run</button>
+            </div>
+            <div v-else>
+                <button v-if="ShowRunButton" @click="RunCodeButton">Run</button>
+            </div>
         </div>
       </div>
   </div>
@@ -118,13 +123,23 @@ export default {
     CopyCode,
   },
   name: "CodeEditor",
-  setup() {
-    const RunCodeAction = inject("RunCodeAction");
+  setup(props) {
+    let RunGoCodeAction;
+    let RunCodeAction;
+
+    if (props.current_language == 'go') {
+        RunGoCodeAction = inject("RunGoCodeAction");
+    } else {
+        RunCodeAction = inject("RunCodeAction");
+    }
+
     const OutputResult = ref("");
   
     const {proxy} = getCurrentInstance();
 
     const ShowRunButton = ref(false);
+
+    const current_language = props.current_language;
 
 
     onMounted(async() => {
@@ -142,6 +157,9 @@ export default {
     })
 
     return {
+      current_language,
+
+      RunGoCodeAction,
       RunCodeAction,
       OutputResult,
       proxy,
@@ -199,6 +217,10 @@ export default {
     language_selector: {
       type: Boolean,
       default: false,
+    },
+    current_language: {
+        type: String,
+        default: "",
     },
     languages: {
       type: Array,
@@ -305,6 +327,11 @@ export default {
     },
   },
   methods: {
+    async RunGoCodeButton() {
+      let result = await this.RunGoCodeAction(this.content);
+      this.OutputResult = result;
+    },
+
     async RunCodeButton() {
       this.proxy.$ResetConsoleResult();
 

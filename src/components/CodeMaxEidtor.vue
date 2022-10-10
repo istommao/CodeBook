@@ -45,7 +45,7 @@ const Languages = ref([['python', 'Python']]);
 
 <template>
     <div style="width: auto;margin: 0 auto">
-        <CodeEditor :autofocus="true" min_height="140px" v-model="CodeData" :language_selector="true" min_width="auto" :languages="Languages" />
+        <CodeEditor current_language="python" :autofocus="true" min_height="140px" v-model="CodeData" :language_selector="true" min_width="auto" :languages="Languages" />
 <!--         <div style="cursor:  pointer;margin: 14px 0;width: 60px;border: 1px solid #292D3F;border-radius: 4px;background: #292D3F;text-align: center;">
             <button @click="RunCodeAction" style="color: #fff">Run</button>
         </div> -->

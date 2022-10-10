@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@highlightjs/vue-plugin": "^2.1.0",
+    "axios": "^1.1.2",
     "highlightjs": "^9.16.2",
     "pyodide": "^0.21.3",
     "simple-code-editor": "^1.2.2"
